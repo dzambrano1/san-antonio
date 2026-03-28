@@ -1,14 +1,85 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
 
-.hero {
+:root {
+    --glow-color: rgba(0, 255, 234, 0.4);
+}
+
+.hero-container {
+    position: relative;
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('./sanantonio.jpg') no-repeat center center/cover;
-    display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+    overflow: hidden;
+    background: #010c14; /* Color base oscuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./hero.png');
+    background-size: cover;
+    background-position: center;
+    /* Efecto de flotación suave */
+    animation: floatHero 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, var(--glow-color) 150%);
+    z-index: 2;
+    /* Pulso de luz que le da "vida" a los neones */
+    animation: pulseGlow 5s infinite alternate;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
 .hero-content h1 { font-size: 3.5rem; text-transform: uppercase; }
 .hero-content p { font-size: 1.5rem; margin-bottom: 20px; font-style: italic; }
+
+/* --- Animaciones --- */
+
+@keyframes floatHero {
+    0%, 100% { transform: scale(1.05) translateY(0); }
+    50% { transform: scale(1.1) translateY(-15px); } /* Zoom suave y subida */
+}
+
+@keyframes pulseGlow {
+    from { opacity: 0.3; }
+    to { opacity: 0.7; }
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #00ffea;
+    color: #010c14;
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px var(--glow-color);
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px #00ffea;
+}
 
 .container { padding: 40px 5%; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }

@@ -8,12 +8,19 @@
 </head>
 <body>
 
-    <header class="hero">
+    <header class="hero-container">
+        <!-- Capa de la imagen principal -->
+        <div class="hero-image"></div>
+        
+        <!-- Capa de partículas/luces dinámicas -->
+        <div class="hero-overlay"></div>
+
+        <!-- Contenido de la App -->
         <div class="hero-content">
-            <h1>San Antonio Bendito</h1>
+            <h1>San Antonio</h1>
             <p>"Consíguelo rapidito"</p>
             <div style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-top: 20px;">
-                <a href="#formulario" class="btn">Encontré algo</a>
+                <a href="#formulario" class="btn-primary">Encontré algo</a>
                 <a href="login.php" class="btn-admin">🔐 Admin</a>
             </div>
         </div>
@@ -158,5 +165,17 @@
         }
     </script>
 
+    <!-- simpleParallax.js para efecto parallax -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var image = document.getElementsByClassName('hero-image');
+            new simpleParallax(image, {
+                delay: .6,
+                transition: 'cubic-bezier(0,0,0,1)',
+                scale: 1.2
+            });
+        });
+    </script>
 </body>
 </html>
