@@ -8,23 +8,28 @@
 </head>
 <body>
 
-    <header class="hero-container">
-        <!-- Capa de la imagen principal -->
-        <div class="hero-image"></div>
-        
-        <!-- Capa de partículas/luces dinámicas -->
-        <div class="hero-overlay"></div>
+    <div class="hero-app-container">
+        <!-- El fondo limpio que acabamos de generar -->
+        <div class="hero-background-static"></div>
 
-        <!-- Contenido de la App -->
-        <div class="hero-content">
-            <h1>San Antonio</h1>
-            <p>"Consíguelo rapidito"</p>
+        <!-- Capa de objetos interactivos -->
+        <div class="objects-layer">
+            <img src="https://pngimg.com/uploads/key/key_PNG1174.png" alt="Llaves" class="floating-item keys" style="--delay: 0s;">
+            <img src="https://img.icons8.com/3d-fluency/250/smartphone.png" alt="Celular" class="floating-item phone" style="--delay: 1.5s;">
+            <img src="https://pngimg.com/uploads/wallet/wallet_PNG7499.png" alt="Cartera" class="floating-item wallet" style="--delay: 0.7s;">
+            <img src="https://img.icons8.com/3d-fluency/250/search.png" alt="Lupa" class="floating-item glass" style="--delay: 2.2s;">
+        </div>
+
+        <!-- Contenido de Texto -->
+        <div class="hero-text">
+            <h2>San Antonio Digital</h2>
+            <p>Localización inteligente de objetos perdidos.</p>
             <div style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-top: 20px;">
                 <a href="#formulario" class="btn-primary">Encontré algo</a>
                 <a href="login.php" class="btn-admin">🔐 Admin</a>
             </div>
         </div>
-    </header>
+    </div>
 
     <main class="container">
         <section class="galeria">
@@ -165,15 +170,21 @@
         }
     </script>
 
-    <!-- simpleParallax.js para efecto parallax -->
-    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
+    <!-- Script de interactividad con el ratón para objetos -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var image = document.getElementsByClassName('hero-image');
-            new simpleParallax(image, {
-                delay: .6,
-                transition: 'cubic-bezier(0,0,0,1)',
-                scale: 1.2
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.floating-item');
+            
+            document.addEventListener('mousemove', (e) => {
+                const moveX = (e.clientX - window.innerWidth / 2) / 40;
+                const moveY = (e.clientY - window.innerHeight / 2) / 40;
+
+                // Aplicar movimiento adicional al ratón usando margenes para evitar que
+                // override la propiedad transform del Keyframe "floatRandom" ni las coordenadas iniciales Left/Top
+                items.forEach(item => {
+                    item.style.marginLeft = `${moveX}px`;
+                    item.style.marginTop = `${moveY}px`;
+                });
             });
         });
     </script>
