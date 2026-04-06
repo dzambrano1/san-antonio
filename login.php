@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     
-    $conn = new mysqli("localhost", "root", "", "san_antonio");
+    require_once 'db.php';
     
     if ($conn->connect_error) {
         $error = "Error de conexión a la base de datos";

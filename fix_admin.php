@@ -1,6 +1,6 @@
 <?php
 // Script para generar el hash correcto y actualizar la base de datos
-$conn = new mysqli("localhost", "root", "", "san_antonio");
+require_once 'db.php';
 
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);

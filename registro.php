@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif ($password !== $confirm_password) {
         $error = "Las contraseñas no coinciden";
     } else {
-        $conn = new mysqli("localhost", "root", "", "san_antonio");
+        require_once 'db.php';
         
         if ($conn->connect_error) {
             $error = "Error de conexión a la base de datos";

@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "san_antonio");
+require_once 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $conn->real_escape_string($_POST['nombre']);

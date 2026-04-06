@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_logueado']) || $_SESSION['admin_logueado'] !== true)
     exit;
 }
 
-$conn = new mysqli("localhost", "root", "", "san_antonio");
+require_once 'db.php';
 $mensaje = '';
 
 // Procesar guardado de cambios

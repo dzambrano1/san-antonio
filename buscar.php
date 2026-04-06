@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-$conn = new mysqli("localhost", "root", "", "san_antonio");
+require_once 'db.php';
 
 if ($conn->connect_error) {
     echo json_encode(['error' => 'Error de conexión', 'objetos' => [], 'total' => 0]);

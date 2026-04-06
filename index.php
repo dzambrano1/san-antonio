@@ -12,29 +12,33 @@
         <!-- El fondo limpio que acabamos de generar -->
         <div class="hero-background-static"></div>
 
-        <!-- Capa de objetos interactivos -->
         <div class="objects-layer">
-            <img src="https://pngimg.com/uploads/key/key_PNG1174.png" alt="Llaves" class="floating-item keys" style="--delay: 0s;">
-            <img src="https://img.icons8.com/3d-fluency/250/smartphone.png" alt="Celular" class="floating-item phone" style="--delay: 1.5s;">
-            <img src="https://pngimg.com/uploads/wallet/wallet_PNG7499.png" alt="Cartera" class="floating-item wallet" style="--delay: 0.7s;">
-            <img src="https://img.icons8.com/3d-fluency/250/search.png" alt="Lupa" class="floating-item glass" style="--delay: 2.2s;">
+            <img src="./keys_tag1.png" alt="Llaves" class="floating-item keys" style="--delay: 0s;">
+            <img src="./luggage_tag1.png" alt="Celular" class="floating-item phone" style="--delay: 1.5s;">
+            <img src="./bag_tag1.png" alt="Cartera" class="floating-item wallet" style="--delay: 0.7s;">
+            <img src="./tag_pic1.png" alt="Lupa" class="floating-item glass" style="--delay: 2.2s;">
         </div>
+
+        <a href="login.php" class="btn-admin">🔐 Admin</a>
+        <a href="ecommerce.php" class="btn-rastreo">📍 Rastreo</a>
 
         <!-- Contenido de Texto -->
         <div class="hero-text">
-            <h2>San Antonio Digital</h2>
-            <p>Localización inteligente de objetos perdidos.</p>
-            <div style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-top: 20px;">
-                <a href="#formulario" class="btn-primary">Encontré algo</a>
-                <a href="login.php" class="btn-admin">🔐 Admin</a>
+            <div class="h2-container">
+                <h2 class="h2-cycle-1">TECNOLOGIA Y FE</h2>
+                <h2 class="h2-cycle-2">REGRESAN LO TUYO</h2>
             </div>
+            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <a href="#formulario" class="btn-primary">Lo Encontré</a>
+            </div>
+
+            <!-- Icono Corazón Centrado con interactividad -->
+            <img src="https://img.icons8.com/3d-fluency/250/like--v1.png" alt="Corazón" class="floating-item heart" style="--delay: 1.2s;">
         </div>
     </div>
-
     <main class="container">
         <section class="galeria">
             <h2>Objetos Encontrados</h2>
-
             <!-- Buscador -->
             <div class="buscador">
                 <form method="GET" action="">
@@ -45,7 +49,7 @@
 
             <div class="grid" id="grid-objetos">
                 <?php
-                $conn = new mysqli("localhost", "root", "", "san_antonio");
+                require_once 'db.php';
                 $res = $conn->query("SELECT * FROM objetos WHERE estado = 'publicado' ORDER BY id DESC");
                 while($row = $res->fetch_assoc()):
                     // Formateamos el mensaje para WhatsApp
